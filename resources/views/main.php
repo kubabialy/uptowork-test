@@ -3,7 +3,7 @@
 <head>
     <title>SRT/TXT Word Counter</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?php echo url('css/cover.css') ?>" >
+    <link rel="stylesheet" href="<?php echo url('css/cover.css', [], true); ?>" >
 </head>
 
 <body class="text-center">
@@ -13,7 +13,7 @@
         <div class="inner">
             <h3 class="masthead-brand">Word Counter</h3>
             <nav class="nav nav-masthead justify-content-center">
-                <a class="nav-link active" href="<?php echo url(''); ?>e">Home</a>
+                <a class="nav-link active" href="<?php echo url('', [], true); ?>">Home</a>
                 <a class="nav-link" href="#">MySQL Integration Schema</a>
                 <a class="nav-link" href="#">Contact</a>
             </nav>
