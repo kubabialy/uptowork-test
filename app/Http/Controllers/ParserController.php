@@ -43,13 +43,7 @@ class ParserController
 
         $parser = app('Parser');
 
-        $parser->parse($file);
-
-        $results = [
-            'word_1' => 4,
-            'word_2' => 6,
-            'word_3' => 11,
-        ];
+        $results = $parser->parse($file);
 
         return \view('main', [
             'includedView' => self::PARSER_RESULTS_VIEW,

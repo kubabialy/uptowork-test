@@ -14,10 +14,8 @@ class ParserStrategyFactory
     public function buildStrategyFromExtension(string $extension) : ParserStrategyInterface
     {
         switch ($extension) {
-            case self::SRT_TYPE:
-                return app('SRTStrategy');
-            case self::TXT_TYPE:
-                return app('TXTStrategy');
+            case self::SRT_TYPE || self::TXT_TYPE:
+                return app('TextFileStrategy');
             default:
                 throw new \BadMethodCallException('Extension provided cannot be handled.');
         }
