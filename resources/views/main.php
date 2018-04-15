@@ -33,15 +33,10 @@
     <main role="main" class="inner cover">
         <h1 class="cover-heading">SRT/TXT Parser</h1>
         <p class="lead">All this app does is counting occurring words in given .srt or .txt file</p>
-
-        <?php if (env('IS_REPO_PUBLIC') == true): ?>
-
-            <p class="lead">
-                <a href="https://github.com/kubabialy/uptowork-test" class="btn btn-lg btn-secondary">See GitHub repository</a>
-                <a href="<?php echo route('parser'); ?>" class="btn btn-lg btn-secondary" style="margin-left: 20px;">Go to parser</a>
-            </p>
-
-        <?php endif; ?>
+        <p class="lead">
+            <a href="https://github.com/kubabialy/uptowork-test" class="btn btn-lg btn-secondary">See GitHub repository</a>
+            <a href="<?php echo route('parser'); ?>" class="btn btn-lg btn-secondary">Go to parser</a>
+        </p>
     </main>
 
     <?php else: ?>
