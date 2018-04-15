@@ -9,12 +9,51 @@
 namespace App\Http\Controllers;
 
 
+use App\User;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ParserController
 {
+    const PARSER_MAIN_VIEW = 'parser';
+
+    const PARSER_RESULTS_VIEW = 'results';
+
+    const REQUESTED_FILE_NAME = 'parsed_file';
+
     public function index() : View
     {
-        return \view('parser');
+        return \view('main', [
+            'includedView' => self::PARSER_MAIN_VIEW
+        ]);
+    }
+
+    public function parse(Request $request) : View
+    {
+        if (!$request->hasFile(self::REQUESTED_FILE_NAME)) {
+            $message = 'File not found. Please try again.';
+
+            return \view('main', [
+                   'includedView' => self::PARSER_MAIN_VIEW,
+                   'message' => $message
+                ]);
+        }
+
+        $file = $request->file('parsed_file')[0];
+
+        $parser = app('Parser');
+
+        $parser->parse($file);
+
+        $results = [
+            'word_1' => 4,
+            'word_2' => 6,
+            'word_3' => 11,
+        ];
+
+        return \view('main', [
+            'includedView' => self::PARSER_RESULTS_VIEW,
+            'results' => $results
+        ]);
     }
 }

@@ -18,3 +18,7 @@ $router->get('/', [
 $router->get('parser', [
     'as' => 'parser', 'uses' => 'ParserController@index'
 ]);
+
+$router->post('parser', [
+    'as' => 'parserAction', 'uses' => 'ParserController@parse'
+]);

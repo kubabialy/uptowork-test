@@ -20,11 +20,21 @@
         </div>
     </header>
 
+    <?php if (isset($message)): ?>
+        <div class="container">
+            <div class="alert alert-danger">
+                <strong>Oops!</strong> <?php echo $message; ?>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <?php if (!isset($includedView)): ?>
+
     <main role="main" class="inner cover">
         <h1 class="cover-heading">SRT/TXT Parser</h1>
-        <p class="lead">This app was created as a recruitment task. All this app does is counting occurring words in given .srt or .txt file</p>
+        <p class="lead">All this app does is counting occurring words in given .srt or .txt file</p>
 
-        <?php if (env('IS_REPO_PUBLIC') == 'true'): ?>
+        <?php if (env('IS_REPO_PUBLIC') == true): ?>
 
             <p class="lead">
                 <a href="https://github.com/kubabialy/uptowork-test" class="btn btn-lg btn-secondary">See GitHub repository</a>
@@ -33,6 +43,12 @@
 
         <?php endif; ?>
     </main>
+
+    <?php else: ?>
+
+        <?php include $includedView . '.php'; ?>
+
+    <?php endif; ?>
 
     <footer class="mastfoot mt-auto">
         <div class="inner">
