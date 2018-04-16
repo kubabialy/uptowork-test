@@ -14,7 +14,8 @@
             <h3 class="masthead-brand">Word Counter</h3>
             <nav class="nav nav-masthead justify-content-center">
                 <a class="nav-link active" href="<?php echo url('', [], true); ?>">Home</a>
-                <a class="nav-link" href="#">MySQL Integration Schema</a>
+                <a class="nav-link" href="<?php echo url('VisualSchema.pdf') ?>">MySQL Integration Schema</a>
+                <a class="nav-link" href="https://github.com/kubabialy/uptowork-test/blob/master/schema.sql">MySQL Code</a>
                 <a class="nav-link" href="#">Contact</a>
             </nav>
         </div>
