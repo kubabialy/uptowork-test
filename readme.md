@@ -1,21 +1,7 @@
-# Lumen PHP Framework
+# Workflow 
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/lumen-framework/v/unstable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
+Użytkownik wchodzi na strone, dodaje produkt lub produkty do koszyka, przechodzi na checkout loguje się, bądź wypełnia w całości formularz (w przypadku zalogowania dane pobierane są z konta użytkownika), składa zamówienie poprzez wybranie formy płatniczej, przechodzi do strony partnera (w tym przypadku PayU) po dokonaniu płatności otrzymuje stosowną informacje zwrotną.
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+# Backend
 
-## Official Documentation
-
-Documentation for the framework can be found on the [Lumen website](http://lumen.laravel.com/docs).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Lumen framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+Użytkownik nie zalogowany może dokonać zamówienia, wówczas tworzony jest rekord w tabeli `OrderDetails` z danymi które przekazane zostały do formularza, w przypadku zarejestrowanego użytkownika dane w formularzu domyślnie wypełniane są tymi przechowywanymi w tabeli `User`, przy czym możliwa jest ich zmiana. Do koszyka (tabela `Cart`) może być dodany produkt (`Product`), tabela koszyka zawiera również informacje odniesienia do ewentualnych rabatów (`Discount`), oraz koszt zamówienia. Dodałem `CartItem` gdyż pomimo tego, że zadanie zakładało możliwość złożenia zamówienia jedynie na jeden produkt jednocześnie, sytuacja ta może zostać zmieniona w przyszłości, stąd potencjalnie będzie istaniała możliwość zaimplementowania wieloproduktowego koszyka. Zamównie tworzone jest w momencie wysłania zapytania do jednego z partnerów oraz zawiera odniesienia do koszyka, waluty jaka została dobrana (`Currency`) jako, że obsługiwanych może być wiele, odniesienia do `OrderDetails` zawierające dane do wysyłki/rozliczenia, odniesienia do wybranej metody płatności (`PaymentMethod`) zawierającej informacje od partnera dotyczące zamówienia, oraz status zamówienia. Dodatkowo istnieje możliwość dokonania zwrotu (`Refund`) podczas którego tworzony jest rekord zawierający informacje dotyczące zamówienia którego dotyczy zwrot, waluty rozliczenia, kwoty (zwrot nie musi być całościowy) oraz opcjonalnie powodu zwrotu.
